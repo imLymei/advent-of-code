@@ -1,7 +1,7 @@
 import { open } from 'node:fs/promises';
 
 async function partOne() {
-	const file = await open('./2022/ts/day01/data.data');
+	const file = await open('./data.data');
 
 	let maxElf = 0;
 	let actualElf = 0;
@@ -17,7 +17,7 @@ async function partOne() {
 }
 
 async function partTwo() {
-	const file = await open('./2022/ts/day01/data.data');
+	const file = await open('./data.data');
 
 	const elves: number[] = [];
 	let actualElf = 0;

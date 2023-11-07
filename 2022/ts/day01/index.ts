@@ -19,23 +19,22 @@ async function partOne() {
 async function partTwo() {
 	const file = await open('./data.data');
 
-	const elves: number[] = [];
+	const elves: number[] = [0,0,0];
 	let actualElf = 0;
-	let highestElf = 0;
 
 	for await (const line of file.readLines()) {
 		if (line !== '') actualElf += +line;
 		else {
-			if (actualElf > highestElf) {
+			const findIndex = elves.findIndex(elf => elf < actualElf)
+			if (findIndex >= 0) {
+				elves.splice(findIndex, 1);
 				elves.unshift(actualElf);
-				highestElf = actualElf;
-				if (elves.length > 3) elves.pop();
 			}
 			actualElf = 0;
 		}
 	}
 
-	const response = elves.slice(0, 3).reduce((sum, value) => sum + value, 0);
+	const response = elves.reduce((sum, value) => sum + value, 0);
 
 	console.log(`Part Two ${response}`);
 }

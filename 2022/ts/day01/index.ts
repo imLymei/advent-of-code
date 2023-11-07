@@ -26,10 +26,8 @@ async function partTwo() {
 		if (line !== '') actualElf += +line;
 		else {
 			const findIndex = elves.findIndex(elf => elf < actualElf)
-			if (findIndex >= 0) {
-				elves.splice(findIndex, 1);
-				elves.unshift(actualElf);
-			}
+			if (findIndex >= 0) elves.splice(findIndex, 1, actualElf);
+			
 			actualElf = 0;
 		}
 	}
